@@ -40,17 +40,19 @@ def add_record():
         f.write(f"{id} {string}\n" )
 
 def search():
-    global contact
-    global string
     find = input("Enter contact to find: ")
-    result =[]
     with open(file_base, 'r', encoding='utf-8') as f:
-        for i in all_data:
+        for i in f:
             if find in i:
-                result.append(i)
-                print(*result)
+                print(i)
             else: 
-                print("Not found.")    
+                print("Not found.")  
+    # 
+    # search_data = exist_contact(0, input("Enter the search data: "))
+    # if search_data:
+    #     print(*search_data, sep="\n")
+    # else:
+    #     print("The data is not correct!")  
 
 def remove():
     global all_data
@@ -81,7 +83,7 @@ def edit():
                         "5. exit\n")
             match change:
                 case "1" | "2" | "3" | "4":
-                    return record_id, change, dict_edit[change]
+                    return record_id, change, data_collection(dict_edit[change])
                 case "5":
                     return 0
                 case _:
