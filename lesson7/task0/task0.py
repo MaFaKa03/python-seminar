@@ -41,18 +41,15 @@ def add_record():
 
 def search():
     find = input("Enter contact to find: ")
+    result = []
     with open(file_base, 'r', encoding='utf-8') as f:
         for i in f:
             if find in i:
-                print(i)
-            else: 
-                print("Not found.")  
-    # 
-    # search_data = exist_contact(0, input("Enter the search data: "))
-    # if search_data:
-    #     print(*search_data, sep="\n")
-    # else:
-    #     print("The data is not correct!")  
+                result.append(i)
+        if result:
+            print(*result)
+        else:
+            print("Not found.")         
 
 def remove():
     global all_data
